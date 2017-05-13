@@ -1,8 +1,12 @@
 import _ from 'lodash';
-import { FETCH_POSTS, FETCH_POST } from '../actions/types';
+import { FETCH_POSTS, FETCH_POST, DELETE_POST } from '../actions/types';
 
 export default function(state = {}, action) {
     switch (action.type) {
+        case DELETE_POST:
+            return _.omit(state, action.payload);
+            // return _.reject(state, post => post.id === action.payload);
+            //          ^^^^^^^^^^^^ for arrays...
         case FETCH_POST:
             // const post = action.payload.data;
             // const newState = { ...state };
